@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 共通ヘッダー部分をこdddddddddddこに挿入 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>デバイスの追加 - IoT Control App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>デバイスの追加</h1>
+    </header>
+
+    <main>
+        <form class="add-device-form">
+            <div class="form-group">
+                <label for="device-name">デバイス名:</label>
+                <input type="text" id="device-name" placeholder="例: リビングのエアコン" required>
+            </div>
+            <div class="form-group">
+                <label for="device-type">デバイスの種類:</label>
+                <select id="device-type" required>
+                    <option value="">選択してください</option>
+                    <option value="aircon">空調機</option>
+                    <option value="tv">映像出力機</option>
+                    <option value="light">照明</option>
+                    <option value="speaker">スピーカー</option>
+                    <!-- 他のデバイス種類を追加可能 -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="device-location">設置場所:</label>
+                <input type="text" id="device-location" placeholder="例: リビング、寝室">
+            </div>
+            <button type="submit">追加</button>
+        </form>
+        <a href="index.html" class="back-link">← 戻る</a>
+    </main>
+</body>
+</html>
