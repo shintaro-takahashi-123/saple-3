@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IoT Control App</title>
+    <link rel="stylesheet" href="welcome.css">
+    <!-- jQueryのCDNを追加 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <p class="varsion">var.1.1.8</p>
+<div id="scroll-animate">
+    <div id="scroll-animate-main">
+      <div class="wrapper-parallax">
+        <header>
+          <h1>Hello-IoTへようこそ</h1>
+        </header>
+  
+        <section class="content">
+          <h1>コンセントにつなぐだけ。</h1>
+        </section>
+  
+        <footer>
+          <h1><a href="index.html" class="start">始める</a></h1>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+<script>
+// フッターの位置をスクロール位置に応じて調整する関数
+function scrollFooter(scrollY, heightFooter) {
+  if (scrollY >= heightFooter) {
+    $("footer").css({
+      bottom: "0px"
+    });
+  } else {
+    $("footer").css({
+      bottom: "-" + heightFooter + "px"
+    });
+  }
+}
+
+// ページの読み込みが完了した時に実行
+$(window).on('load', function () {
+  var windowHeight = $(window).height(),
+    footerHeight = $("footer").height(),
+    heightDocument = windowHeight + $(".content").height() + footerHeight - 20;
+
+  // スクロールアニメーション要素の高さを設定
+  $("#scroll-animate, #scroll-animate-main").css({
+    height: heightDocument + "px"
+  });
+
+  // ヘッダーとコンテンツの高さ設定
+  $("header").css({
+    height: windowHeight + "px",
+    "line-height": windowHeight + "px"
+  });
+
+  $(".wrapper-parallax").css({
+    "margin-top": windowHeight + "px"
+  });
+
+  // 初期スクロール状態に基づいてフッター位置を調整
+  scrollFooter(window.scrollY, footerHeight);
+
+  // スクロールイベントに応じてヘッダーとフッターの位置を調整
+  window.onscroll = function () {
+    var scroll = window.scrollY;
+
+    $("#scroll-animate-main").css({
+      top: "-" + scroll + "px"
+    });
+
+    $("header").css({
+      "background-position-y": 50 - (scroll * 100) / heightDocument + "%"
+    });
+
+    scrollFooter(scroll, footerHeight);
+  };
+});
+</script>
+
+</body>
+</html>
